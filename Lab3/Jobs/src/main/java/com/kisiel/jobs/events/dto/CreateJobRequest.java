@@ -12,13 +12,14 @@ import java.util.function.Function;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-
 public class CreateJobRequest {
 
-    private String jobName;
+    private String name;
 
     public static Function<Job, CreateJobRequest> entityToDtoMapper() {
-        return entity -> new CreateJobRequest(entity.getName());
+        return job -> CreateJobRequest.builder()
+                .name(job.getName())
+                .build();
     }
 
 }

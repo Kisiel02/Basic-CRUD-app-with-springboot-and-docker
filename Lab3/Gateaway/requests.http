@@ -1,0 +1,86 @@
+###
+GET http://localhost:8080/api/jobs
+
+###
+GET http://localhost:8080/api/jobs/Nicht
+
+###
+GET http://localhost:8080/api/jobs/Doctor
+
+###
+POST http://localhost:8080/api/jobs
+Content-Type: application/json
+
+{
+  "name": "job",
+  "salary": "muchmoney"
+}
+
+###
+POST http://localhost:8080/api/jobs
+Content-Type: application/json
+
+{
+  "name": "Programmer",
+  "salary": 30000,
+  "studiesNeeded": true
+}
+
+###
+GET http://localhost:8080/api/jobs
+
+###
+GET http://localhost:8080/api/jobs/Programmer
+
+###
+GET http://localhost:8080/api/workers
+
+###
+GET http://localhost:8080/api/workers/Kowalski
+
+###
+POST http://localhost:8080/api/jobs/Builder/workers
+Content-Type: application/json
+
+{
+  "surname": "Kisiel",
+  "age": 55,
+  "name": "Jakub"
+}
+
+###
+GET http://localhost:8080/api/jobs/Builder/workers/Kowalski
+
+###
+POST http://localhost:8080/api/jobs/Builder/workers
+Content-Type: application/json
+
+{
+  "surname": "Kisiel",
+  "age": 21,
+  "name": "Jakub"
+}
+
+###
+PUT http://localhost:8080/api/jobs/Builder/workers/Kisiel
+Content-Type: application/json
+
+{
+  "salary": 5700,
+  "name": "Jakub",
+  "job": "Programmer"
+}
+
+###
+GET http://localhost:8080/api/workers/Kisiel
+
+###
+GET http://localhost:8080/api/workers/Pietroch
+
+###
+DELETE http://localhost:8080/api/jobs/None/workers/Pietroch
+
+###
+DELETE http://localhost:8080/api/jobs/Programmer
+
+

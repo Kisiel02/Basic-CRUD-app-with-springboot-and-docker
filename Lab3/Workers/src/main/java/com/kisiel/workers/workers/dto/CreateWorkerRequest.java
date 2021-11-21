@@ -1,10 +1,12 @@
-package com.kisiel.jobsAndWorkers.workers.dto;
+package com.kisiel.workers.workers.dto;
 
-import com.kisiel.jobsAndWorkers.jobs.Job;
-import com.kisiel.jobsAndWorkers.workers.Worker;
+
+import com.kisiel.workers.jobs.entity.Job;
+import com.kisiel.workers.workers.entity.Worker;
 import lombok.*;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 @Getter
 @Setter
@@ -22,16 +24,14 @@ public class CreateWorkerRequest {
 
     private String name;
 
-    private String job;
-
     public static Function<CreateWorkerRequest, Worker> dtoToEntityMapper(
-            Function<String, Job> jobFunction
+            Supplier<Job> jobSupplier
     ) {
         return request -> new Worker(
                 request.getSurname(),
                 request.getAge(),
                 request.getName(),
-                jobFunction.apply(request.getJob())
+                jobSupplier.get()
         );
     }
 }

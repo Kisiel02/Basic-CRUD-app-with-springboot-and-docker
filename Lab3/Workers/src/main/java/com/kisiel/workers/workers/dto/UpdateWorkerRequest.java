@@ -1,6 +1,6 @@
-package com.kisiel.jobsAndWorkers.workers.dto;
+package com.kisiel.workers.workers.dto;
 
-import com.kisiel.jobsAndWorkers.workers.Worker;
+import com.kisiel.workers.workers.entity.Worker;
 import lombok.*;
 
 import java.util.function.BiFunction;

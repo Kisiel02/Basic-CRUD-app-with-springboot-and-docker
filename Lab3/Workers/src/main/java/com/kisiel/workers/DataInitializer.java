@@ -1,9 +1,9 @@
-package com.kisiel.jobsAndWorkers;
+package com.kisiel.workers;
 
-import com.kisiel.jobsAndWorkers.jobs.Job;
-import com.kisiel.jobsAndWorkers.jobs.JobService;
-import com.kisiel.jobsAndWorkers.workers.Worker;
-import com.kisiel.jobsAndWorkers.workers.WorkerService;
+import com.kisiel.workers.jobs.entity.Job;
+import com.kisiel.workers.jobs.rest.JobService;
+import com.kisiel.workers.workers.entity.Worker;
+import com.kisiel.workers.workers.rest.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,24 +28,18 @@ public class DataInitializer {
         if (jobService.find("Doctor").isEmpty()) {
             Job doctor = new Job();
             doctor.setName("Doctor");
-            doctor.setSalary(7000);
-            doctor.setStudiesNeeded(true);
             jobService.create(doctor);
         }
 
         if (jobService.find("Builder").isEmpty()) {
             Job builder = new Job();
             builder.setName("Builder");
-            builder.setSalary(3200);
-            builder.setStudiesNeeded(false);
             jobService.create(builder);
         }
 
         if (jobService.find("Cleaner").isEmpty()) {
             Job cleaner = new Job();
             cleaner.setName("Cleaner");
-            cleaner.setSalary(7000);
-            cleaner.setStudiesNeeded(false);
             jobService.create(cleaner);
         }
 

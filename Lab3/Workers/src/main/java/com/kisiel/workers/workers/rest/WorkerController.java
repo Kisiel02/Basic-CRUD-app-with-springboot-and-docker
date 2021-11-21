@@ -1,11 +1,10 @@
-package com.kisiel.jobsAndWorkers.workers;
+package com.kisiel.workers.workers.rest;
 
-import com.kisiel.jobsAndWorkers.jobs.Job;
-import com.kisiel.jobsAndWorkers.jobs.JobService;
-import com.kisiel.jobsAndWorkers.workers.dto.CreateWorkerRequest;
-import com.kisiel.jobsAndWorkers.workers.dto.GetWorkerResponse;
-import com.kisiel.jobsAndWorkers.workers.dto.GetWorkersResponse;
-import com.kisiel.jobsAndWorkers.workers.dto.UpdateWorkerRequest;
+import com.kisiel.workers.workers.dto.CreateWorkerRequest;
+import com.kisiel.workers.workers.dto.GetWorkerResponse;
+import com.kisiel.workers.workers.dto.GetWorkersResponse;
+import com.kisiel.workers.workers.dto.UpdateWorkerRequest;
+import com.kisiel.workers.workers.entity.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,19 +21,9 @@ public class WorkerController {
 
     private WorkerService workerService;
 
-    private JobService jobService;
-
     @Autowired
-    public WorkerController(WorkerService workerService, JobService jobService) {
+    public WorkerController(WorkerService workerService) {
         this.workerService = workerService;
-        this.jobService = jobService;
-    }
-
-    @GetMapping("{jobName}/workers")
-    public ResponseEntity<GetWorkersResponse> getAllWorkersByJob(@PathVariable("jobName") String jobName) {
-        Optional<Job> job = jobService.find(jobName);
-        return job.map(value -> ResponseEntity.ok(GetWorkersResponse.entityToDtoMapper().apply(workerService.findAll(value))))
-                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping
@@ -56,7 +45,7 @@ public class WorkerController {
     public ResponseEntity<Void> createWorker(@RequestBody CreateWorkerRequest request) {
         try {
             Worker worker = CreateWorkerRequest
-                    .dtoToEntityMapper(name -> jobService.find(name).orElseThrow())
+                    .dtoToEntityMapper(() ->null)
                     .apply(request);
             workerService.create(worker);
             return ResponseEntity.ok().build();

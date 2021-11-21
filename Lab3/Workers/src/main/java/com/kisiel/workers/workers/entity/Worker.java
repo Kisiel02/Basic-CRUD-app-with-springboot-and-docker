@@ -1,6 +1,6 @@
-package com.kisiel.jobsAndWorkers.workers;
+package com.kisiel.workers.workers.entity;
 
-import com.kisiel.jobsAndWorkers.jobs.Job;
+import com.kisiel.workers.jobs.entity.Job;
 import lombok.*;
 
 import javax.persistence.Entity;

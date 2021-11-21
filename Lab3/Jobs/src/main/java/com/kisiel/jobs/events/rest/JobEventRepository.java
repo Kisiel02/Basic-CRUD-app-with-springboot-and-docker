@@ -23,7 +23,8 @@ public class JobEventRepository {
     }
 
     public void create(Job job) {
-        restTemplate.postForLocation("/jobs", CreateJobRequest.entityToDtoMapper().apply(job));
+        CreateJobRequest createJobRequest = CreateJobRequest.entityToDtoMapper().apply(job);
+        restTemplate.postForLocation("/jobs", createJobRequest);
     }
 
 

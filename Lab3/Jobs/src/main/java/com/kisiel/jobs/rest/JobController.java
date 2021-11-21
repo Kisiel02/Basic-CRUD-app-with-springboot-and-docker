@@ -33,8 +33,8 @@ public class JobController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("{name}")
-    public ResponseEntity<GetJobResponse> getJob(@PathVariable("name") String name) {
+    @GetMapping("{jobName}")
+    public ResponseEntity<GetJobResponse> getJob(@PathVariable("jobName") String name) {
         return jobService.find(name)
                 .map(value -> ResponseEntity.ok(GetJobResponse.entityToDtoMapper().apply(value)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -53,19 +53,19 @@ public class JobController {
 
     }
 
-    @DeleteMapping("{name}")
-    public ResponseEntity<Void> deleteJob(@PathVariable("name") String name) {
+    @DeleteMapping("{jobName}")
+    public ResponseEntity<Void> deleteJob(@PathVariable("jobName") String name) {
         Optional<Job> job = jobService.find(name);
         if (job.isPresent()) {
-            jobService.delete(job.get().getName());
+            jobService.delete(job.get());
             return ResponseEntity.accepted().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PutMapping("{name}")
-    public ResponseEntity<Void> updateJob(@RequestBody UpdateJobRequest request, @PathVariable("name") String name) {
+    @PutMapping("{jobName}")
+    public ResponseEntity<Void> updateJob(@RequestBody UpdateJobRequest request, @PathVariable("jobName") String name) {
         Optional<Job> job = jobService.find(name);
         if (job.isPresent()) {
             UpdateJobRequest.dtoToEntityUpdater().apply(job.get(), request);
