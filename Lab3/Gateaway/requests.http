@@ -48,11 +48,10 @@ Content-Type: application/json
   "name": "Jakub"
 }
 
-###
-GET http://localhost:8080/api/jobs/Builder/workers/Kowalski
+
 
 ###
-POST http://localhost:8080/api/jobs/Builder/workers
+POST http://localhost:8082/api/jobs/Builder/workers
 Content-Type: application/json
 
 {
@@ -62,14 +61,17 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/api/jobs/Builder/workers/Kisiel
+GET http://localhost:8082/api/jobs/Builder/workers/Kisiel
+
+###
+PUT http://localhost:8082/api/jobs/Builder/workers/Kisiel
 Content-Type: application/json
 
 {
-  "salary": 5700,
-  "name": "Jakub",
-  "job": "Programmer"
+  "age": 22,
+  "name": "Jakub"
 }
+
 
 ###
 GET http://localhost:8080/api/workers/Kisiel
