@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8080/api/jobs
+GET http://localhost:8083/api/jobs
 
 ###
 GET http://localhost:8080/api/jobs/Nicht
@@ -39,19 +39,7 @@ GET http://localhost:8080/api/workers
 GET http://localhost:8080/api/workers/Kowalski
 
 ###
-POST http://localhost:8080/api/jobs/Builder/workers
-Content-Type: application/json
-
-{
-  "surname": "Kisiel",
-  "age": 55,
-  "name": "Jakub"
-}
-
-
-
-###
-POST http://localhost:8082/api/jobs/Builder/workers
+POST http://localhost:8080/api/jobs/Programmer/workers
 Content-Type: application/json
 
 {
@@ -61,13 +49,14 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8082/api/jobs/Builder/workers/Kisiel
+GET http://localhost:8082/api/jobs/Programmer/workers/Kisiel
 
 ###
-PUT http://localhost:8082/api/jobs/Builder/workers/Kisiel
+PUT http://localhost:8082/api/jobs/Programmer/workers/Kisiel
 Content-Type: application/json
 
 {
+  "job": "Builder",
   "age": 22,
   "name": "Jakub"
 }
