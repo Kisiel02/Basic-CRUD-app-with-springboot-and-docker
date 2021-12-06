@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs and Workers</title>
+    <link rel="stylesheet" href="edit_job.css"/>
+    <link rel="stylesheet" href="../../styles.css"/>
+    <script type="module" src="job_edit.js" defer="defer"></script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>Jobs and Workers</h1>
+    </header>
+
+    <nav class="navigation-bar">
+        <ul>
+            <li><a href="../../index.html">main</a></li>
+            <li><a href="../list/jobs_list.html">jobs</a></li>
+        </ul>
+    </nav>
+
+    <section class="main-section">
+        <article class="text--justified">
+            <header><h2>Edit job:</h2></header>
+            <form class="jobForm" id="jobEditForm">
+                <label for="salary">Salary:</label>
+                <input class="ui-control ui-input" id="salary" name="salary" type="number"/>
+                <label for="studiesNeeded">Studies needed?</label>
+                <input class="ui-control ui-input" id="studiesNeeded" name="studiesNeeded" type="checkbox"/>
+                <input class="ui-control ui-button" type="submit" name="Update"/>
+            </form>
+        </article>
+    </section>
+
+</div>
+</body>
+</html>
