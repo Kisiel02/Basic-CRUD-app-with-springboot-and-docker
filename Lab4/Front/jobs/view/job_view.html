@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs and Workers</title>
+    <link rel="stylesheet" href="../../styles.css"/>
+    <script type="module" src="job_view.js" defer="defer"></script>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>Jobs and Workers</h1>
+    </header>
+
+    <nav class="navigation-bar">
+        <ul>
+            <li><a href="../../index.html">main</a></li>
+            <li><a href="../list/jobs_list.html">jobs</a></li>
+            <li><a id='newWorker' href="../../workers/create/create_job.html">create new worker</a></li>
+        </ul>
+    </nav>
+
+    <section class="main-section">
+        <article class="text--justified">
+            <section>
+                <h3>Job</h3>
+                <table class="data-table">
+                    <thead>
+                    <tr>
+                        <th id="jobName">Job name</th>
+                        <th id="salary">salary</th>
+                        <th id="studiesNeeded">studies needed?</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    <tr>
+                        <td id="name"></td>
+                        <td><a href="#">view</a></td>
+                        <td><a href="#">edit</a></td>
+                        <td>
+                            <button class="ui-button ui-control">delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </article>
+    </section>
+</div>
+</body>
+</html>
