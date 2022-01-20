@@ -24,15 +24,15 @@ public class GatewayApplication {
         return builder
                 .routes()
                 .route("jobs", r -> r
-                        .host("localhost:8080")
+                        .host("backend:8080")
                         .and()
                         .path("/api/jobs/{jobName}", "/api/jobs")
-                        .uri("http://localhost:8083"))
+                        .uri("http://backend:8083"))
                 .route("workers", r -> r
-                        .host("localhost:8080")
+                        .host("backend:8080")
                         .and()
                         .path("/api/workers", "/api/workers/**", "/api/jobs/{jobName}/workers", "/api/jobs/{jobName}/workers/**")
-                        .uri("http://localhost:8082"))
+                        .uri("http://backend:8082"))
                 .build();
     }
 

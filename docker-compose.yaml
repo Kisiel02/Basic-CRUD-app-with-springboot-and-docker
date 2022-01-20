@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+    backend:
+        container_name: backend
+        networks:
+            - internal-network
+        build:
+            context: ./backend/
+        
+    frontend:
+        container_name: frontend
+        networks:
+            - internal-network
+        ports:
+            - 8080:80
+        build:
+            context: ./frontend/
+            
+networks:
+    internal-network:
