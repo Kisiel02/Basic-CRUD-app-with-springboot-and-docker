@@ -6,4 +6,5 @@ COPY ./Workers/target/Workers-0.0.1-SNAPSHOT.jar apps/
 COPY start.sh  apps/
 
 EXPOSE 8080
+#CMD tail -f /dev/null
 ENTRYPOINT ["apps/start.sh"]

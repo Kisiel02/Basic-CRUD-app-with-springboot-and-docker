@@ -13,9 +13,18 @@ services:
         networks:
             - internal-network
         ports:
-            - 8080:80
+            - 8090:80
         build:
             context: ./frontend/
+            
+    proxy:
+        container_name: reverseProxy
+        networks:
+            - internal-network
+        ports:
+            - 8080:80
+        build:
+            context: ./reverseProxy/
             
 networks:
     internal-network:
