@@ -6,6 +6,10 @@ To run this project clone the repo and run:
 
 ``` $ docker-compose up --build ```
 
+then you can open in your browser:
+
+```http://localhost:8080/index.html```
+
 # About
 It's a simple CRUD app based on 3 separate spring boot modules. Everything is contenerized with Docker and apps are packed with Maven. There are 3 containers:
 1. Frontend server based on apache httpd
