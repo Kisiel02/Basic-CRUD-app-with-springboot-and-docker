@@ -1,10 +1,29 @@
+# Build Projects
+
+FROM maven AS build
+
+COPY ./Gateway/src /home/apps/GatewayApp/src
+COPY ./Gateway/pom.xml /home/apps/GatewayApp
+
+COPY ./Jobs/src /home/apps/JobsApp/src
+COPY ./Jobs/pom.xml /home/apps/JobsApp
+
+COPY ./Workers/src /home/apps/WorkersApp/src
+COPY ./Workers/pom.xml /home/apps/WorkersApp
+
+RUN mvn clean install -f /home/apps/GatewayApp/pom.xml
+RUN mvn clean install -f /home/apps/JobsApp/pom.xml
+RUN mvn clean install -f /home/apps/WorkersApp/pom.xml
+
+
+# Deploy
+
 FROM adoptopenjdk/openjdk11:alpine
 
-COPY ./Gateway/target/Gateaway-0.0.1-SNAPSHOT.jar apps/
-COPY ./Jobs/target/Jobs-0.0.1-SNAPSHOT.jar apps/
-COPY ./Workers/target/Workers-0.0.1-SNAPSHOT.jar apps/
+COPY --from=build /home/apps/GatewayApp/target/Gateaway.jar /apps/
+COPY --from=build /home/apps/JobsApp/target/Jobs.jar /apps/
+COPY --from=build /home/apps/WorkersApp/target/Workers.jar /apps/
 COPY start.sh  apps/
 
 EXPOSE 8080
-#CMD tail -f /dev/null
-ENTRYPOINT ["apps/start.sh"]
+ENTRYPOINT ["/apps/start.sh"]
